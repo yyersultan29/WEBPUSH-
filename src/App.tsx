@@ -1,11 +1,11 @@
-// App.jsx
+
 import { useEffect } from "react";
 import { requestPermission, onMessageListener } from "./firebase";
 import CustomLineChart from "./charts";
 
 function App() {
   useEffect(() => {
-    requestPermission(); // Запрос на разрешение и токен
+    requestPermission(); 
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onMessageListener().then((payload:any) => {
@@ -15,8 +15,12 @@ function App() {
   }, []);
 
   return (
-  <div>
-    <h1>Firebase Push in Vite</h1>
+  <div style={{
+    display:"flex",
+    flexDirection:"column",
+    gap:"10px",
+    padding:'5px'
+  }}>
     <CustomLineChart />
   </div>
   );

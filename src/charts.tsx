@@ -2,6 +2,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Ca
 
 const data = [
   { month: "Jan 2025", kaspi: 150, gov: 5000, b2b: 80 },
+  { month: "Jan 2025", kaspi: 150, gov: 5000, b2b: 80 },
   { month: "Feb 2025", kaspi: 400, gov: 8000, b2b: 90 },
   { month: "Mar 2025", kaspi: 700, gov: 9000, b2b: 120 },
   { month: "Apr 2025", kaspi: 1200, gov: 15000, b2b: 150 },
