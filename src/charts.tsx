@@ -19,7 +19,6 @@ const data = [
 export default function CustomLineChart() {
   return (
     <div className="chart-container">
-      {/* Header cards */}
       <div className="chart-header">
         <div className="stat-card">
           <div className="title">Kaspi.kz</div>
@@ -35,7 +34,6 @@ export default function CustomLineChart() {
         </div>
       </div>
 
-      {/* Chart */}
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
