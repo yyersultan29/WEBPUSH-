@@ -1,12 +1,7 @@
-// src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { VAPID_KEY } from "./const";
 
-// Import the functions you need from the SDKs you need
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyC4koPzrqVmcEh7eUGqVEkKwpvxwzST4c4",
   authDomain: "web-push-notic.firebaseapp.com",
@@ -32,7 +27,6 @@ export const requestPermission = async () => {
       const token = await getToken(messaging, {
         vapidKey: VAPID_KEY,
       });
-      console.log("FCM Token:", token);
       return token;
     } catch (error) {
       console.error("Error getting FCM token:", error);
