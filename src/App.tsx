@@ -10,7 +10,7 @@ function App() {
     const fetchImages = async () => {
       try {
         const response = await fetch(
-          `https://picsum.photos/v2/list?page=2&limit=5`
+          `https://picsum.photos/v2/list?page=2&limit=30`
         );
         const data = await response.json();
         setImages(data);
@@ -28,8 +28,10 @@ function App() {
         width: '100%',
       }}
     >
-      <h3>PRODUCT CARD</h3>
-      <ProductCard images={images.map(el => el.download_url)} />
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <ProductCard images={images.splice(0, 5).map(el => el.download_url)} />
+        <ProductCard images={images.splice(5, 10).map(el => el.download_url)} />
+      </div>
       <Images />
     </div>
   );
