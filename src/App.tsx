@@ -1,28 +1,37 @@
-
-import { useEffect } from "react";
-import { requestPermission, onMessageListener } from "./firebase";
-import CustomLineChart from "./charts";
+import React from 'react';
+import { Images } from './images';
+import type { ImageEntity } from './model';
+import { ProductCard } from './images-card';
 
 function App() {
-  useEffect(() => {
-    requestPermission(); 
+  const [images, setImages] = React.useState<ImageEntity[]>([]);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onMessageListener().then((payload:any) => {
-      console.log("Message received in foreground:", payload);
-      alert(payload?.notification?.title || "New notification");
-    });
+  React.useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch(
+          `https://picsum.photos/v2/list?page=2&limit=5`
+        );
+        const data = await response.json();
+        setImages(data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchImages();
   }, []);
 
+  console.log(images);
   return (
-  <div style={{
-    display:"flex",
-    flexDirection:"column",
-    gap:"10px",
-    padding:'5px'
-  }}>
-    <CustomLineChart />
-  </div>
+    <div
+      style={{
+        width: '100%',
+      }}
+    >
+      <h3>PRODUCT CARD</h3>
+      <ProductCard images={images.map(el => el.download_url)} />
+      <Images />
+    </div>
   );
 }
 
