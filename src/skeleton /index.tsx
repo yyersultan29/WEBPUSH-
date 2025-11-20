@@ -1,22 +1,17 @@
 // SkeletonBox.tsx
 
-type Props = {
-  className?: string;
-  width?: string; // e.g. "w-48" or "w-full"
-  height?: string; // e.g. "h-6" or "h-40"
-  rounded?: string; // e.g. "rounded", "rounded-lg", "rounded-full"
-  count?: number; // how many boxes (for lists)
-  as?: 'div' | 'span';
-};
+import type { Props } from './types';
 
-export default function SkeletonBox({
-  className = '',
-  width = 'w-full',
-  height = 'h-6',
-  rounded = 'rounded',
-  count = 1,
-  as: Comp = 'div',
-}: Props) {
+export default function SkeletonBox(props: Props) {
+  const {
+    className = '',
+    width = 'w-full',
+    height = 'h-6',
+    rounded = 'rounded',
+    count = 1,
+    as: Comp = 'div',
+  } = props;
+
   const items = Array.from({ length: count });
   return (
     <div

@@ -1,10 +1,5 @@
 import React, { useState, useRef } from 'react';
-
-type ProductCardProps = {
-  images: string[];
-  width?: number;
-  height?: number;
-};
+import type { ProductCardProps } from './types';
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   images,
@@ -16,12 +11,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
-
-    // images length = 5
-    // image width  = 200px
-    // part = each dot have range = 200 / 5 = 40px
-    // x = is where is user mouse position ?
-    // x= 140px / 40px = 3.5 floor = 3
 
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
