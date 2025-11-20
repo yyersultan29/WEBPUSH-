@@ -1,11 +1,9 @@
 import React, { useState, useRef } from 'react';
 import type { ProductCardProps } from './types';
 
-export const ProductCard: React.FC<ProductCardProps> = ({
-  images,
-  width = 250,
-  height = 300,
-}) => {
+export const ProductCard: React.FC<ProductCardProps> = props => {
+  const { images, width = 250, height = 300 } = props;
+
   const [index, setIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -35,9 +33,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setIndex(0)}
     >
-      {/* Лента изображений */}
-      {/* width 500% 5 img * 100%  */}
-      {/* parent overflow hidden  */}
       <div
         style={{
           display: 'flex',

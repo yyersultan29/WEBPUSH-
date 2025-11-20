@@ -87,8 +87,7 @@ export const Image: React.FC<ImageProps> = ({
           {...restProps}
         />
       )}
-      {/* Невидимый placeholder (чтобы IntersectionObserver работал) */}
-      {/* можно добавить этот реф в wrapper но тогда  */}
+
       {!visible && (
         <div
           ref={imgRef as React.RefObject<HTMLDivElement>}

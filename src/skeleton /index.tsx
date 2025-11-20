@@ -13,6 +13,7 @@ export default function SkeletonBox(props: Props) {
   } = props;
 
   const items = Array.from({ length: count });
+
   return (
     <div
       aria-busy='true'
@@ -23,7 +24,11 @@ export default function SkeletonBox(props: Props) {
       {items.map((_, i) => (
         <Comp
           key={i}
-          className={`${width} ${height} ${rounded} bg-gray-200 dark:bg-gray-700 animate-pulse ${className}`}
+          className={`
+            ${width} ${height} 
+            ${rounded} bg-gray-200 
+            dark:bg-gray-700 
+            animate-pulse ${className}`}
           aria-hidden='true'
         />
       ))}
