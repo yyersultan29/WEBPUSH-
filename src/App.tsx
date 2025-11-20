@@ -2,6 +2,15 @@ import React from 'react';
 import { Images } from './images';
 import type { ImageEntity } from './model';
 import { ProductCard } from './images-card';
+import { retryFetch } from './custom-fetch';
+
+const fakeRequest = () => {
+  retryFetch('https://yersult.kz/api/v1/users', 5, 1000)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(e => console.log('USER JAK ERROR ', e));
+};
 
 function App() {
   const [images, setImages] = React.useState<ImageEntity[]>([]);
@@ -19,6 +28,7 @@ function App() {
       }
     };
     fetchImages();
+    fakeRequest();
   }, []);
 
   console.log(images);
