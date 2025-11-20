@@ -1,27 +1,14 @@
 import React, { useState, useRef } from 'react';
+import type { ProductCardProps } from './types';
 
-type ProductCardProps = {
-  images: string[];
-  width?: number;
-  height?: number;
-};
+export const ProductCard: React.FC<ProductCardProps> = props => {
+  const { images, width = 250, height = 300 } = props;
 
-export const ProductCard: React.FC<ProductCardProps> = ({
-  images,
-  width = 250,
-  height = 300,
-}) => {
   const [index, setIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
-
-    // images length = 5
-    // image width  = 200px
-    // part = each dot have range = 200 / 5 = 40px
-    // x = is where is user mouse position ?
-    // x= 140px / 40px = 3.5 floor = 3
 
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -46,9 +33,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setIndex(0)}
     >
-      {/* Лента изображений */}
-      {/* width 500% 5 img * 100%  */}
-      {/* parent overflow hidden  */}
       <div
         style={{
           display: 'flex',
